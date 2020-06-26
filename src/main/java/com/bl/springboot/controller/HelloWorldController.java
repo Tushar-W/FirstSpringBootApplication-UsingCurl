@@ -26,4 +26,9 @@ public class HelloWorldController {
     public String sayHello(@RequestBody User user) {
         return " Hello " + user.getFirstName() + " " + user.getLastName() + " !!!";
     }
+
+    @PutMapping("/put/{firstName}")
+    public String sayHelloPut(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
+        return " Hello " + firstName + " " + lastName + "..!!!";
+    }
 }
