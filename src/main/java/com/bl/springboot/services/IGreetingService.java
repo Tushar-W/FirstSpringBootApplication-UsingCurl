@@ -8,4 +8,5 @@ import java.util.List;
 public interface IGreetingService {
     Greeting addGreeting(User user);
     List<Greeting> findAllGreetings();
+    Greeting findGreetingById(long id);
 }
