@@ -1,7 +1,15 @@
 package com.bl.springboot.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Greeting {
+    @Id
     private long id;
+
     private String name;
 
     public Greeting() {

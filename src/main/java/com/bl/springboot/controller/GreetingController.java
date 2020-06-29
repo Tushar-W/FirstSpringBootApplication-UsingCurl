@@ -15,10 +15,12 @@ public class GreetingController {
     @Autowired
     private IGreetingService greetingService;
 
-    @GetMapping("")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name){
+    @GetMapping("/getgreeting")
+    public Greeting greeting(@RequestParam(value = "firstName") String firstName,
+                             @RequestParam(value = "lastName") String lastName){
         User user = new User();
-        user.setFirstName(name);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
         return greetingService.addGreeting(user);
     }
 }
