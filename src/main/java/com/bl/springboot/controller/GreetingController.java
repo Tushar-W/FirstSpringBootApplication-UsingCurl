@@ -4,10 +4,7 @@ import com.bl.springboot.model.Greeting;
 import com.bl.springboot.model.User;
 import com.bl.springboot.services.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
@@ -35,5 +32,15 @@ public class GreetingController {
     @GetMapping ("/getgreetingbyid")
     public Greeting getGreetingById(@RequestParam (value = "id") Long id) {
         return greetingService.findGreetingById(id);
+    }
+
+    @PutMapping ("/updategreeting/{id}")
+    public Greeting updateGreeting(@PathVariable Long id,
+                                   @RequestParam (value = "firstName") String firstName,
+                                   @RequestParam (value = "lastName") String lastName) {
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        return greetingService.updateGreetingById(id, user);
     }
 }

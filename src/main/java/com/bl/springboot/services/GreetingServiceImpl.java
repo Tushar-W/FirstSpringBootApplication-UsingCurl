@@ -32,4 +32,11 @@ public class GreetingServiceImpl implements IGreetingService {
     public Greeting findGreetingById(long id) {
         return greetingRepository.findById(id).get();
     }
+
+    @Override
+    public Greeting updateGreetingById(long id, User user) {
+        Greeting greeting = findGreetingById(id);
+        greeting.setName("Hello " + user.getFirstName() + " " + user.getLastName());
+        return greetingRepository.save(greeting);
+    }
 }

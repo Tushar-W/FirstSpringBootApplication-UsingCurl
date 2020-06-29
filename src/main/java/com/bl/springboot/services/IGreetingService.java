@@ -9,4 +9,5 @@ public interface IGreetingService {
     Greeting addGreeting(User user);
     List<Greeting> findAllGreetings();
     Greeting findGreetingById(long id);
+    Greeting updateGreetingById(long id, User user);
 }
