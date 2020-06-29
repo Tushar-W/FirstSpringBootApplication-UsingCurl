@@ -15,15 +15,6 @@ public class GreetingController {
     @Autowired
     private IGreetingService greetingService;
 
-    @GetMapping("/getgreeting")
-    public Greeting greeting(@RequestParam(value = "firstName") String firstName,
-                             @RequestParam(value = "lastName") String lastName){
-        User user = new User();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        return greetingService.addGreeting(user);
-    }
-
     @GetMapping("/getallgreeting")
     public List<Greeting> getAllGreeting(){
         return greetingService.findAllGreetings();
@@ -32,6 +23,15 @@ public class GreetingController {
     @GetMapping ("/getgreetingbyid")
     public Greeting getGreetingById(@RequestParam (value = "id") Long id) {
         return greetingService.findGreetingById(id);
+    }
+
+    @PostMapping("/addgreeting")
+    public Greeting greeting(@RequestParam(value = "firstName") String firstName,
+                             @RequestParam(value = "lastName") String lastName){
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        return greetingService.addGreeting(user);
     }
 
     @PutMapping ("/updategreeting/{id}")
